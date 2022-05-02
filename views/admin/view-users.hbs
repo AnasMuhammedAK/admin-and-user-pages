@@ -1,0 +1,47 @@
+<section id="table" class="mt-5">
+  <div class="container">
+
+    <a class="btn btn-success float-end mb-5" href="/register">Add User</a>
+
+    <table id="userTable" class="table border border-dark  mb-5">
+      <thead>
+        <tr>
+          {{! <th scope="col">No</th> }}
+          <th scope="col"> User Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Edit or Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each userDetails}}
+          <tr>
+            {{!-- <th scope="row">{{this.no}}</th> --}}
+            <td>{{this.fname}}</td>
+            <td>{{this.email}}</td>
+            <td>
+
+              <a
+                class="btn btn-primary"
+                href="/admin/edit-user/{{this._id}}"
+              >Edit</a>
+              <a
+                class="btn btn-danger"
+                href="/admin/delete-user/{{this._id}}"
+                onclick="return confirm('are you want to delete {{this.fname}} ?')"
+              >Delete</a>
+
+            </td>
+
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+ $(document).ready( function () {
+    $('#userTable').DataTable();
+} );
+</script>
